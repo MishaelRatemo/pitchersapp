@@ -1,14 +1,30 @@
 
 {% extends 'base.html' %}
 {% import 'macros.html' as macros %}
+<!--  -->
 {% block title %}
+    Pitch|Home
+{% endblock%}
 
-{% endblock %}
+
 
 {% block styles %}
+{% endblock %}
+
 
 {% block content %}
+<div class="row">
+    <div class="col-2">
+        <marquee behavior="fast" truespeed="true" direction="down"> <h1>test</h1></marquee>
+    </div>
     
+    <div class="col-8"><marquee behavior="fast" direction="left">Pictches</marquee></div>
+    <div class="col-2">
+        <marquee behavior="" direction="up"> <h1>marqu</h1></marquee>
 
+    </div>
+</div>    
+
+    <h1> {{ title }}</h1>
  
 {% endblock %}
