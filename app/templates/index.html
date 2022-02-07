@@ -7,24 +7,73 @@
 {% endblock%}
 
 
-
+<!--  -->
 {% block styles %}
 {% endblock %}
 
-
+<!--  -->
 {% block content %}
-<div class="row">
-    <div class="col-2">
-        <marquee behavior="fast" truespeed="true" direction="down"> <h1>test</h1></marquee>
-    </div>
-    
-    <div class="col-8"><marquee behavior="fast" direction="left">Pictches</marquee></div>
-    <div class="col-2">
-        <marquee behavior="" direction="up"> <h1>marqu</h1></marquee>
+    <main class="container-fluid mb-4 h-100 ">
+        <div class="row">
+            <div class="col-2">
+                <marquee behavior="" scrollamount=20 direction="down">
+                    <h3 class="text-center">Pitch Pitch Pitch </h3>
+                </marquee>
+            </div>
 
-    </div>
-</div>    
+            <div class="col-8 d-flex justify-content-center align-items-center">
+                <marquee behavior="" scrollamount="" direction="left"> <h2> In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful?</h2></marquee>
+            </div>
+            <div class="col-2">
+                <marquee behavior="" scrollamount=20 direction="up">
+                    <h3>Pitch Pitch Pitch </h3>
+                </marquee>
 
-    <h1> {{ title }}</h1>
- 
+            </div>
+        </div>
+        <h1 class="text-center"> {{ title }}</h1>
+        <div class="d-flex justify-content-around">
+            <div class="card text-center mb-1">
+                <div class="card-header text-light" style="background-color: #270219;">
+                Love
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                
+                </div>
+                <div class="card-footer text-muted" style="background-color: #12355b;">
+                2 days ago
+                </div>
+            </div>
+            <div class="card text-center mb-1">
+                <div class="card-header text-light" style="background-color: #270219;">
+                Love
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                
+                </div>
+                <div class="card-footer text-muted" style="background-color: #12355b;">
+                2 days ago
+                </div>
+            </div><div class="card text-center mb-1">
+                <div class="card-header text-light" style="background-color: #270219;">
+                Love
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                
+                </div>
+                <div class="card-footer text-muted" style="background-color: #12355b;">
+                2 days ago
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
 {% endblock %}
