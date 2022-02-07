@@ -7,5 +7,10 @@ def create_app(config_name):
     #app configurations
     app.config.from_object(config_options[config_name])
     
+    # Blueprint registration 
+    from .main import  root as app_blueprint
+    app.register_blueprint(app_blueprint)
+    
+    
     return app
     
