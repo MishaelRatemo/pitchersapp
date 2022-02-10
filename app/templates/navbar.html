@@ -35,10 +35,15 @@
       <ul class="nav navbar-nav navbar-right">
         {% if current_user.is_authenticated %} <!-- Current user is a variable that is defined by flask-login and is made available to all the view functions and templates -->
        
-       <h4 class="py-3 text-center rounded-circle" style="background-color:#12355b;" ><a class="text-light text-decoration-none px-2 " href="{{url_for('root.profile',uname=current_user.username)}}">{{current_user.username}}</a></h4>
+       <h4 class="py-3 text-center rounded-circle" >
+              <a class="text-light text-decoration-none px-2 " href="{{url_for('root.profile',uname=current_user.username)}}"> 
+               
+                <img src="{{url_for('static',filename=current_user.profile_pic_path)}}" width="'100" alt="" class="profile img-fluid rounded-circle">
+                
+        </h4>
        <p class=" " ><a class="text-light text-decoration-none px-2 " href="{{url_for('auth.logout')}}">Logout</a></p>
        {% else %}
-       <li><a href="{{url_for('auth.login')}}">Login</a></li>
+       <h6><a class="text-light text-decoration-none p-2" href="{{url_for('auth.login')}}">Login</a></h6>
        {%endif%}
    </ul>
     </div>
