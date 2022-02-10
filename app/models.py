@@ -14,11 +14,6 @@ def load_user(user_id):
 
 
 class User( UserMixin, db.Model):
-     # def __init__(self,email,username,password,pitchees):
-    #     self.email = email
-    #     self.username = username
-    #     self.password=password
-    #     self.pitchees = pitchees
     
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True)
@@ -48,16 +43,7 @@ class User( UserMixin, db.Model):
 
 
 class Pitches(db.Model):
-    # all_pitches=[]
-    # def __ini__(self,pitch_id,owner,title,description,category,upvotes,downvotes,comments):
-    #     self.pitch_id = pitch_id
-    #     self.owner = owner
-    #     self.title = title
-    #     self.description = description
-    #     self.category = category
-    #     self.upvotes = upvotes
-    #     self.downvotes = downvotes
-    #     self.comments = comments
+   
     
     __tablename__ = 'pitches'
 
@@ -65,8 +51,6 @@ class Pitches(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     description = db.Column(db.String(), index = True)
     title = db.Column(db.String())
-    # downvotes = db.Column(db.Integer, default=int(0))
-    # upvotes = db.Column(db.Integer, default=int(0))
     category = db.Column(db.String(255), nullable=False)
     comments = db.relationship('Comments',backref='pitch',lazy='dynamic')
     upvotes = db.relationship('Upvotes', backref = 'pitch', lazy = 'dynamic')
@@ -79,21 +63,16 @@ class Pitches(db.Model):
     def get_pitches(cls, id):
         pitches = Pitches.query.order_by(pitch_id=id).desc().all()
         return pitches
+    
+    @classmethod    
+    def get_my_pitches (cls, id):
+        myPitches = Pitches.query.filter_by(owner_id = id).all()
+        return myPitches
 
     def __repr__(self):
         return f'Pitch {self.description}'       
         
-    # def savePitches(self):
-    #     Pitches.all_pitches.append(self)
-        
-    # @classmethod
-    # def get_pitches(cls,id):
-    #     response = []
-    #     for pitch in cls.all_pitches:
-    #         if pitch.pitch_id ==id:
-    #             response.append(pitch)
-    #     return response        
-
+    
 class Upvotes(db.Model):
     __tablename__ = 'upvotes'
 
@@ -119,7 +98,11 @@ class Upvotes(db.Model):
     def get_all_upvotes(cls,pitch_id):
         upvotes = Upvotes.query.order_by('id').all()
         return upvotes
-
+    
+    @classmethod
+    def check_user_voted(cls,user_u_id,pitch_v_id):
+        chkupvote = Upvotes.query.filter_by(user_id= user_u_id, pitch_id= pitch_v_id)
+        
     def __repr__(self):
         return f'{self.user_id}:{self.pitch_u_id}'
 
@@ -162,7 +145,6 @@ class Comments(db.Model):
     pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.pid'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable= False)
     description = db.Column(db.Text)
-
     
     def __repr__(self):
         return f"Comment : id: {self.id} comment: {self.description}"
