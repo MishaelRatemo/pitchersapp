@@ -37,8 +37,12 @@
        
        <h4 class="py-3 text-center rounded-circle" >
               <a class="text-light text-decoration-none px-2 " href="{{url_for('root.profile',uname=current_user.username)}}"> 
-               
+                {% if current_user.profile_pic_path %}
                 <img src="{{url_for('static',filename=current_user.profile_pic_path)}}" width="'100" alt="" class="profile img-fluid rounded-circle">
+                 {% else %} 
+                <img src="{{url_for('static',filename='uploads/myprof.png')}}" width="'100" alt="" class="profile img-fluid rounded-circle">
+
+                {% endif %}
                 
         </h4>
        <p class=" " ><a class="text-light text-decoration-none px-2 " href="{{url_for('auth.logout')}}">Logout</a></p>

@@ -4,7 +4,7 @@ import os
 class Config:
     #connect to pitcher db
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/pitchersapp'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/pitchersapp'
     
     #specify the destination  where you want to store  Images.
     UPLOADED_PHOTOS_DEST ='app/static/uploads'
