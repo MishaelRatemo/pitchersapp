@@ -25,7 +25,7 @@ def index():
 @root.route('/love')
 def love():
     
-    love = Pitches.query.filter_by(category = "Love")    
+    love = Pitches.query.filter_by(category = "Love")     
     title='Love Pitches'
     return render_template('love.html', title=title, Love=love)
 
@@ -60,11 +60,6 @@ def finance():
     return render_template('business.html', title=title, Business=finance)
 
 
-
-
-
-
-
 @root.route('/pitches/new/', methods =['GET', 'POST'])
 @login_required
 def new_pitch():
@@ -88,11 +83,15 @@ def new_pitch():
 @root.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
-
+    my_pitches = Pitches.get_my_pitches(user.id) 
+    print(' #############')
+    print(my_pitches)
+    print(' #############')
+    
     if user is None:
         abort(404)
 
-    return render_template("profile/profile.html", user = user)
+    return render_template("profile/profile.html", user = user, Pitches=my_pitches)
 
 
 #a route that will process our form(image/photo upload form) submission request
@@ -159,12 +158,17 @@ def upvote_pitch(pitch_id):
     
     pitch_upvotes = Upvotes.query.filter_by(pitch_u_id= pitch_id, user_id= current_user.id).first()
     
-    if pitch_upvotes:
-        db.session.add(new_upvote)
-        db.session.commit()
-        return  redirect(request.referrer)        
+    chkupvote =Upvotes.query.filter_by(pitch_u_id=pitch_id,user_id =current_user.id).all()
+    if len(chkupvote) > 1:
+         return  redirect(request.referrer)
     else:
-        return  redirect(request.referrer)
+                
+        if pitch_upvotes:
+            db.session.add(new_upvote)
+            db.session.commit()
+            return  redirect(request.referrer)        
+        else:
+            return  redirect(request.referrer)
 
 @root.route('/pitch/downvote/<int:pitch_id>/downvote', methods = ['GET', 'POST'])
 @login_required
@@ -175,12 +179,17 @@ def downvote_pitch(pitch_id):
     
     pitch_downvotes = Downvotes.query.filter_by(pitch_d_id= pitch_id, user_id= current_user.id).first()
     
-    if pitch_downvotes:
-        db.session.add(new_downvote)
-        db.session.commit()
-        return  redirect(request.referrer)        
+    chk_down_vote =Downvotes.query.filter_by(pitch_d_id=pitch_id,user_id =current_user.id).all()
+    if len(chk_down_vote) > 1:
+         return  redirect(request.referrer)
     else:
-        return  redirect(request.referrer)
+                
+        if pitch_downvotes:
+            db.session.add(new_downvote)
+            db.session.commit()
+            return  redirect(request.referrer)        
+        else:
+            return  redirect(request.referrer)
     
     # if Downvotes.query.filter(Downvotes.user_id==user.id,Downvotes.pitch_id==pitch_id).first():
     #     return  redirect(url_for('root.index'))
