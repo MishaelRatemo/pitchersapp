@@ -5,8 +5,6 @@
 {% block title %}
     Pitch| Love
 {% endblock%}
-
-
 <!--  -->
 {% block styles %}
 {% endblock %}
@@ -14,38 +12,19 @@
 <!--  -->
 {% block content %}
     <main class="container-fluid mb-4 h-100 ">
-        <div class="row">
-            <div class="col-2">
-                <marquee behavior="" scrollamount=20 direction="down">
-                    <h3 class="text-center">Pitch Pitch Pitch </h3>
-                </marquee>
-            </div>
 
-            <div class="col-8 d-flex justify-content-center align-items-center">
-                <marquee behavior="" scrollamount="" direction="left"> <h2> In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful?</h2></marquee>
-            </div>
-            <div class="col-2">
-                <marquee behavior="" scrollamount=20 direction="up">
-                    <h3>Pitch Pitch Pitch </h3>
-                </marquee>
+        {% block scroller %}
+            {% include 'scroll.html' %}
+        {% endblock %}
 
-            </div>
-        </div>
         <h1 class="text-center"> {{ title }}</h1>
         <h2><a href="/pitches/new"> Write your Pitch </a></h2>
-        
-      <div class="tab-content">
-        <div id="love" class="container tab-pane active"><br>
-          {{ macro.display(Love) }}
-          
-        </div>
-        
-      </div>
-            
-            
     
-
-
+        <div class="tab-content">
+            <div class="d-flex flex-wrap justify-content-between"><br>
+                {{ macro.display(Life) }}
+            </div>    
+        </div>
     </main>
 
 {% endblock %}

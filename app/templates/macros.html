@@ -10,10 +10,10 @@
 			<h5 class="card-title">{{category.title}}</h5>
 			<p class="card-text word-wrap">{{category.description}}</p>
 			<footer class="blockquote-footer"> Posted by {{category.user.username}}</footer>
-			<div class="d-flex justify-content-around align-items-center ">
+			<div class="d-flex flex-wrap justify-content-around align-items-center ">
 				<a href="{{url_for('root.new_comment',pitch_id = category.pid)}}" class="btn btn-info"> Add a comment</a>
-				<a href="{{url_for('root.upvote_pitch',pitch_id = category.pid)}}" class="btn btn-success btn-sm">Upvote<span>{{category.upvotes.count()}}</span></a>
-				<a href="{{url_for('root.downvote_pitch',pitch_id = category.pid)}}" class="btn btn-secondary btn-sm">Downvote<span>{{category.downvotes.count()}}</span></a>
+				<a href="{{url_for('root.upvote_pitch',pitch_id = category.pid)}}" class="btn btn-success btn-sm">Upvote<span  class="rounded-circle bg-light text-black p-1">{{category.upvotes.count()}}</span></a>
+				<a href="{{url_for('root.downvote_pitch',pitch_id = category.pid)}}" class="btn btn-secondary btn-sm">Downvote<span class="rounded-circle bg-light text-black p-1" >{{category.downvotes.count()}}</span></a>
 			</div>			
 			</div>
 			<div class="card-footer text-muted" style="background-color: #12355b;">
