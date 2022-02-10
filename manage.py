@@ -8,8 +8,8 @@ from app.models import Comments
 from flask_migrate import Migrate, MigrateCommand
 
 # creating app instance
-app = create_app('development')
-# app = create_app('production') # good for local production << deactivate or comment when on development mode>>
+# app = create_app('development')
+app = create_app('production') # goherood for local production << deactivate or comment when on development mode>>
 
 
 manager = Manager(app)
@@ -29,5 +29,5 @@ def make_shell_context():
 
 
 if __name__ == '__main__':
-    # app.run()
-    manager.run()
+    app.run()
+    # manager.run()
