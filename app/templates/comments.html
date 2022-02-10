@@ -17,7 +17,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6 m-auto">
                 {{wtf.quick_form(form)}}
             </div>
         </div>
@@ -25,8 +25,8 @@
 
     <hr>
     <div class="container-fluid ">
-        <h4>Comments for this Pitch</h4>   
-        <div class="d-flex justify-content-around">
+        <h4>What people think about this Pitch</h4>   
+        <div class="d-flex flex-column justify-content-around">
             {{ macro.displayComment(comment) }}
         </div>             
     </div>
