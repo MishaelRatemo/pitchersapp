@@ -1,1 +1,53 @@
+{% macro display(category_list) %}
 
+	 {% if category_list %}
+		{% for category in category_list %}
+		<div class="card text-center w-25 mb-1">
+			<div class="card-header text-light" style="background-color: #270219;">
+				<h5>{{category.category}}</h5>			
+			</div>
+			<div class="card-body">
+			<h5 class="card-title">{{category.title}}</h5>
+			<p class="card-text word-wrap">{{category.description}}</p>
+			<footer class="blockquote-footer"> Posted by {{category.user.username}}</footer>
+			<div class="d-flex justify-content-around align-items-center ">
+				<a href="{{url_for('root.new_comment',pitch_id = category.pid)}}" class="btn btn-info"> Add a comment</a>
+				<a href="{{url_for('root.upvote_pitch',pitch_id = category.pid)}}" class="btn btn-success btn-sm">Upvote<span>{{category.upvotes.count()}}</span></a>
+				<a href="{{url_for('root.downvote_pitch',pitch_id = category.pid)}}" class="btn btn-secondary btn-sm">Downvote<span>{{category.downvotes.count()}}</span></a>
+			</div>			
+			</div>
+			<div class="card-footer text-muted" style="background-color: #12355b;">
+				Posted on {{ category.posted | strftime }}
+			</div>
+		</div>
+	
+			
+		{% endfor %}
+	  {% else %}
+	{% endif %}
+
+{% endmacro %}
+
+
+{% macro displayComment(comments) %}
+<ul>
+
+    {% if comments %}
+    {% for comment in comments %}
+    <div class="row text-center">
+        <a>
+            <p style="color: brown">{{ comment.description }}</p>
+        </a>
+        <small> posted by {{comment.user.username}}</small>
+    </div>
+    {% endfor %}
+    {% else %}
+
+    <h3>This post does not does not have any comments yet !</h3>
+    {%endif%}
+
+</ul>
+			
+
+
+{% endmacro %}

@@ -7,27 +7,40 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse  navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto text-center fs-3  fw-bolder mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto text-center fs-3  fw-bolder mb-2 mb-lg-0" role="tablist" >
           <li class="nav-item">
             <a class="nav-link active text-white" aria-current="page" href="">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white disabled text-light" href=""> Categories > </a>
+            <a class="nav-link text-white disabled text-light" data-toggle="tab" href=""> Categories > </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " href=""> Life </a>
+            <a class="nav-link text-white " data-toggle="tab" href="#life"> Life </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " href=""> Business </a>
+            <a class="nav-link text-white " data-toggle="tab" href="#business"> Business </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " href=""> Love </a>
+            <a class="nav-link text-white " data-toggle="tab" href="/love"> Love </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " href=""> Coding </a>
-          </li>
-         
-        </ul>        
+            <a class="nav-link text-white " data-toggle="tab" href="#coding"> Coding </a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link text-white " data-toggle="tab" href="#finance"> Finance </a>
+          </li>               
+        </ul>  
+              
       </div>
+      <ul class="nav navbar-nav navbar-right">
+        {% if current_user.is_authenticated %} <!-- Current user is a variable that is defined by flask-login and is made available to all the view functions and templates -->
+       
+       <h4 class="py-3 text-center rounded-circle" style="background-color:#12355b;" ><a class="text-light text-decoration-none px-2 " href="{{url_for('root.profile',uname=current_user.username)}}">{{current_user.username}}</a></h4>
+       <p class=" " ><a class="text-light text-decoration-none px-2 " href="{{url_for('auth.logout')}}">Logout</a></p>
+       {% else %}
+       <li><a href="{{url_for('auth.login')}}">Login</a></li>
+       {%endif%}
+   </ul>
     </div>
+    
   </nav>
