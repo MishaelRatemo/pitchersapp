@@ -15,25 +15,52 @@ from . import root
 @root.route('/')
 def index():
     
-    all_pitches = Pitches.query.order_by(Pitches.posted.desc())
-    finance = Pitches.query.filter_by(category="Finance")
-    coding = Pitches.query.filter_by(category = "Coding")
-    life = Pitches.query.filter_by(category = "Life")
-    business = Pitches.query.filter_by(category = "Business")
-    others = Pitches.query.filter_by(category = "Others")
+    all_pitches = Pitches.query.order_by(Pitches.posted.desc())   
     
-    total_upvotes = Upvotes.get_all_upvotes(pitch_id= Pitches.pid)    
+    # total_upvotes = Upvotes.get_all_upvotes(pitch_id= Pitches.pid)    
     title = 'Pitches Home'
     
-    return render_template('index.html', title=title, Others= others, Business=business,  Life= life,pitches= all_pitches, Coding = coding, Finance=finance )
+    return render_template('index.html', title=title, pitches= all_pitches )
 
 @root.route('/love')
 def love():
     
-    love = Pitches.query.filter_by(category = "Love")
-    
+    love = Pitches.query.filter_by(category = "Love")    
     title='Love Pitches'
-    return render_template('life.html', title=title, Love=love)
+    return render_template('love.html', title=title, Love=love)
+
+@root.route('/life')
+def life():
+    
+    life = Pitches.query.filter_by(category = "Life")    
+    title='Life Pitches'
+    return render_template('life.html', title=title, Life=life)
+
+
+@root.route('/business')
+def business():
+    
+    business = Pitches.query.filter_by(category = "Business")    
+    title='Businesss Pitches'
+    return render_template('business.html', title=title, Business=business)
+
+
+@root.route('/coding')
+def coding():
+    
+    coding = Pitches.query.filter_by(category = "Coding")    
+    title='Coding Pitches'
+    return render_template('coding.html', title=title, Coding=coding)
+
+@root.route('/finance')
+def finance():
+    
+    finance = Pitches.query.filter_by(category = "Finance")    
+    title='Finance Pitches'
+    return render_template('business.html', title=title, Business=finance)
+
+
+
 
 
 
