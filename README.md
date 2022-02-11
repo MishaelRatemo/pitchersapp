@@ -16,7 +16,7 @@ The user would like to.... :
 +  submit a pitch in any category.
 +  view the different categories.
 
-## View [Demo](https://.herokuapp.com/) 
+## View [Demo](https://https://pitchershub.herokuapp.com/) 
 
 
 
@@ -24,9 +24,21 @@ The user would like to.... :
 
 #### The application requires the following installations to operate 
 * python3
-* flask v2 and above
+* email-validator
+* Flask
+* Flask-Bootstrap
+* Flask-Login
+* Flask-Mail
+* Flask-Migrate
+* Flask-Reuploaded
+* Flask-Script
+* Flask-SimpleMDE
+* Flask-SQLAlchemy
+* Flask-WTF
 * gunicorn
-* bootstrap
+* python-dateutil
+* SQLAlchemy
+* markdown2
 
 #### Cloning
 
@@ -46,26 +58,38 @@ The user would like to.... :
  * #### create flask environnent
         $  python3 -m venv pip virtual -- creates the virtual for runnning your app      
         $ source virtual/bin/env  -- activate  the virtual
-        $ chmod +x launcher.py
-        $ ./launcher.py
+        $ chmod +x start.sh
+        $ ./start.sh
 * #### Install Flask and other dependencies/Modules
         $ pip install flask
-        $ pip install flask-Bootstrap ( optional)
-* #### set up the API KEY
-        + create account in [] and key will be issued
-        + in root fold of your app create  a folder,config file in it and paste you API key and add it to .gitignore
-        + alternatively have any python file in root folder and :
-            export NEWS_API_KEY='<Your-Api-Key goes here>'
-            python3 manage.py server
+        $ pip install flask-Bootstrap ( optional) 
+        $ pip install email-validator
+        $ pip install Flask
+        $ pip install Flask-Bootstrap
+        $ pip install Flask-Login
+        $ pip install Flask-Mail
+        $ pip install Flask-Migrate
+        $ pip install Flask-Reuploaded
+        $ pip install Flask-Script
+        $ pip install Flask-SimpleMDE
+        $ pip install Flask-SQLAlchemy
+        $ pip install Flask-WTF
+        $ pip install gunicorn
+        $ pip install python-dateutil
+        $ pip install SQLAlchemy
+        $ pip install markdown2
+* #### set up the SECRET KEY
+       + create your own secret key for wtf form
 * #### Run app using vs terminal or main terminal
-        $ chmod +x launch.sh
-        $ ./launch.sh
+        $ chmod +x start.sh
+        $ ./star.sh
 
 
 ## Technologies Used
 
 * python3
 * Flask Webframework
+* Bootstrap cdn
 
 
 ## Known Bugs
